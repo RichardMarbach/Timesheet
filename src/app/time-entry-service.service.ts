@@ -40,13 +40,17 @@ export class TimeEntryServiceService {
       .pop();
   }
 
-  getAllEntries() {
+  getAllEntries(): TimeEntry[] {
     return this.timeEntries;
+  }
+
+  clearEntries(): TimeEntryServiceService {
+    this.timeEntries = [];
+    return this;
   }
 
   sumEntries(): TimeUnit {
     return this.timeEntries
       .reduce((acc, cur) => acc.add(cur.elapsedTime()), new TimeUnit());
   }
-
 }
