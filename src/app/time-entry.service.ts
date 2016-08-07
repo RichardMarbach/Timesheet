@@ -5,13 +5,13 @@ import { TimeEntry } from './time-entry';
 import { TimeUnit } from './time-unit';
 
 @Injectable()
-export class TimeEntryServiceService {
+export class TimeEntryService {
   private timeEntries: TimeEntry[] = [];
   lastId = 0;
 
   constructor() { }
 
-  addEntry(entry: TimeEntry): TimeEntryServiceService {
+  addEntry(entry: TimeEntry): TimeEntryService {
     if (!entry.id) {
       entry.id = ++this.lastId;
     }
@@ -28,7 +28,7 @@ export class TimeEntryServiceService {
     return entry;
   }
 
-  deleteEntryById(id: number): TimeEntryServiceService {
+  deleteEntryById(id: number): TimeEntryService {
     this.timeEntries = this.timeEntries
       .filter(entry => entry.id !== id);
     return this;
@@ -44,7 +44,7 @@ export class TimeEntryServiceService {
     return this.timeEntries;
   }
 
-  clearEntries(): TimeEntryServiceService {
+  clearEntries(): TimeEntryService {
     this.timeEntries = [];
     return this;
   }

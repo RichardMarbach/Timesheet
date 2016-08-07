@@ -4,21 +4,21 @@
 import { addProviders, async, inject } from '@angular/core/testing';
 import { TimeUnit } from './time-unit';
 import { TimeEntry } from './time-entry';
-import { TimeEntryServiceService } from './time-entry-service.service';
+import { TimeEntryService } from './time-entry.service';
 
 describe('Service: TimeEntryService', () => {
   beforeEach(() => {
-    addProviders([TimeEntryServiceService]);
+    addProviders([TimeEntryService]);
   });
 
   describe('+getAllEntries', () => {
     it('should return an empty array when no entries are present',
-      inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
+      inject([TimeEntryService], (service: TimeEntryService) => {
         expect(service.getAllEntries()).toEqual([]);
     }));
 
     it('should return a list of all entries',
-      inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
+      inject([TimeEntryService], (service: TimeEntryService) => {
         const entry1 = new TimeEntry();
         const entry2 = new TimeEntry();
         service.addEntry(entry1);
@@ -29,7 +29,7 @@ describe('Service: TimeEntryService', () => {
 
   describe('+save(entry)', () => {
     it('should assign automatically incrementing id',
-      inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
+      inject([TimeEntryService], (service: TimeEntryService) => {
         const entry1 = new TimeEntry();
         const entry2 = new TimeEntry();
         service.addEntry(entry1);
@@ -41,7 +41,7 @@ describe('Service: TimeEntryService', () => {
 
   describe('+updateEntry(id)', () => {
     it('should return the entry with a corresponding id and updated data',
-      inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
+      inject([TimeEntryService], (service: TimeEntryService) => {
         const entry1 = new TimeEntry();
         service.addEntry(entry1);
         const updatedEntry = service.updateEntryById(entry1.id, {
@@ -51,7 +51,7 @@ describe('Service: TimeEntryService', () => {
     }));
 
     it('should return null if the id is not found',
-      inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
+      inject([TimeEntryService], (service: TimeEntryService) => {
         const entry1 = new TimeEntry();
         service.addEntry(entry1);
         const updatedEntry = service.updateEntryById(0, {
@@ -63,7 +63,7 @@ describe('Service: TimeEntryService', () => {
 
   describe('+deleteEntry(id)', () => {
     it('should remove the entry with a corresponding id',
-      inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
+      inject([TimeEntryService], (service: TimeEntryService) => {
         const entry1 = new TimeEntry();
         const entry2 = new TimeEntry();
         service.addEntry(entry1);
@@ -77,7 +77,7 @@ describe('Service: TimeEntryService', () => {
     }));
 
     it('should not remove anything if no corresponding id found',
-      inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
+      inject([TimeEntryService], (service: TimeEntryService) => {
         const entry1 = new TimeEntry();
         const entry2 = new TimeEntry();
         service.addEntry(entry1);
@@ -91,15 +91,10 @@ describe('Service: TimeEntryService', () => {
 
   describe('+sumEntries', () => {
     it('should sum all the entries',
-      inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
+      inject([TimeEntryService], (service: TimeEntryService) => {
         service.addEntry(new TimeEntry({endTime: new TimeUnit(2)}));
         service.addEntry(new TimeEntry({endTime: new TimeUnit(5)}));
         expect(service.sumEntries()).toEqual(new TimeUnit(7));
       }));
   });
-
-  it('should ...',
-    inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
-      expect(service).toBeTruthy();
-    }));
 });
