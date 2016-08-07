@@ -43,6 +43,10 @@ export class TimeUnit {
         return this.cmp(time) === 0;
     }
 
+    abs() {
+        return new TimeUnit(Math.abs(this.hours), Math.abs(this.minutes));
+    }
+
     toString(): string {
         const hours = this.hours > 9 ? this.hours : '0' + this.hours;
         const minutes = this.minutes > 9 ? this.minutes : '0' + this.minutes;
