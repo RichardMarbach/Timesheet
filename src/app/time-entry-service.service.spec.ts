@@ -12,12 +12,12 @@ describe('Service: TimeEntryService', () => {
   });
 
   describe('+getAllEntries', () => {
-    it('should return an empty array when no entries are present', 
+    it('should return an empty array when no entries are present',
       inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
         expect(service.getAllEntries()).toEqual([]);
     }));
 
-    it('should return a list of all entries', 
+    it('should return a list of all entries',
       inject([TimeEntryServiceService], (service: TimeEntryServiceService) => {
         const entry1 = new TimeEntry();
         const entry2 = new TimeEntry();

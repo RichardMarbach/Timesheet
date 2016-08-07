@@ -30,7 +30,7 @@ export class TimeEntryServiceService {
 
   deleteEntryById(id: number): TimeEntryServiceService {
     this.timeEntries = this.timeEntries
-      .filter(entry => entry.id !== id); 
+      .filter(entry => entry.id !== id);
     return this;
   }
 
