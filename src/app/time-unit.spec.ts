@@ -65,6 +65,32 @@ describe('TimeUnit', () => {
     });
   });
 
+  describe('+cmp', () => {
+    it('should return 0 when time units are equal', () => {
+      const t1 = new TimeUnit();
+      const t2 = new TimeUnit();
+      expect(t1.cmp(t2)).toEqual(0);
+    });
+
+    it('should return -1 when the time is smaller than the given time', () => {
+      const t1 = new TimeUnit(0, 0);
+      const t2 = new TimeUnit(1, 1);
+      expect(t1.cmp(t2)).toEqual(-1);
+
+      const t3 = new TimeUnit(0, 1);
+      expect(t1.cmp(t3)).toEqual(-1);
+    });
+
+    it('should return 1 when the time is greater than the given time', () => {
+      const t1 = new TimeUnit(1, 1);
+      const t2 = new TimeUnit(0, 0);
+      expect(t1.cmp(t2)).toEqual(1);
+
+      const t3 = new TimeUnit(1, 0);
+      expect(t1.cmp(t3)).toEqual(1);
+    });
+  });
+
   describe('+toString', () => {
     it('should pad values less than 10 with a zero', () => {
       const timeStamp = new TimeUnit().toString();
