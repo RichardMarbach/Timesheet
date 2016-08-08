@@ -28,18 +28,14 @@ ul {
     padding: 0;
     width: 100%;
     overflow-y: scroll;
+    margin: 0;
 }
 
 li {
     outline: none;
 }
 
-li:first-child {
-    padding-top: 0;
-}
-
 li:last-child {
-    padding-bottom: 0;
     border-bottom: none;
 }
 
@@ -77,6 +73,7 @@ input:placeholder-shown {
 }
 
 .btn {
+    user-select: none;
     display: inline-block;
     line-height: 36px;
     height: 36px;
@@ -158,6 +155,7 @@ input:placeholder-shown {
 }
 
 .del-btn {
+    user-select: none;
     color: #606060;
 }
 
