@@ -1,5 +1,8 @@
 export class TimeUnit {
-    constructor(public hours = 0, public minutes = 0) { }
+    constructor(public hours = 0, public minutes = 0) {
+        this.hours += Math.floor(this.minutes / 60);
+        this.minutes = (this.minutes < 0 ? 60 + this.minutes : this.minutes) % 60;
+    }
 
     adjustTo24Hour(): TimeUnit {
         // Add the amount of hours in the minutes to the hours
