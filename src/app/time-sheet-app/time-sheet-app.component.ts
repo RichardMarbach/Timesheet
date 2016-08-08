@@ -2,13 +2,15 @@ import { Component, AfterViewInit, ViewChildren } from '@angular/core';
 import { TimeUnit } from '../time-unit';
 import { TimeEntry } from '../time-entry';
 import { TimeEntryService } from '../time-entry.service';
+import { ScrollGlueDirective } from '../shared/scroll-glue.directive';
 
 @Component({
   moduleId: module.id,
   selector: 'time-sheet-app',
   templateUrl: 'time-sheet-app.component.html',
   styleUrls: ['time-sheet-app.component.css'],
-  providers: [TimeEntryService]
+  providers: [TimeEntryService],
+  directives: [ScrollGlueDirective]
 })
 export class TimeSheetAppComponent implements AfterViewInit {
   @ViewChildren('newStart') focusChild;
