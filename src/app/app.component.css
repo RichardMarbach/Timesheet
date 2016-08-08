@@ -1,0 +1,16 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.viewport {
+    display: flex;
+    flex-direction: column;
+    color: #303030;
+    font-family: Helvetica, Arial, sans-serif;
+
+    width: 100vw;
+    height: 100vh;
+    margin: -8px;
+    background-color: #fefefe;
+    overflow: hidden;
+}

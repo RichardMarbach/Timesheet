@@ -1,26 +1,51 @@
 <header>
   <h1>Timesheet calculator</h1>
 </header>
-<section>
-  <div *ngIf="entries.length > 0">
+
+<section class="center main">
+  <div class="row time-section">
+    <div class="row time-headings no-shrink">
+      <div class="grid-3"><b>Start Times</b></div>
+      <div class="grid-3"><b>End Times</b></div>
+    </div>
+    <div class="row no-shrink list-padding" [class.list-border]="showListBorder()">
+      <div class="grid-3">
+        <input type="text" #newStart maxlength="5" placeholder="HH:MM" (change)="newEntry.startTime = newStart.value" 
+          (keyup.enter)="addEntry()" [ngModel]="newEntry.startTime" class="time-input" tabindex="1">
+      </div>
+      <div class="grid-3">
+        <input type="text" #newEnd maxlength="5" placeholder="HH:MM" (change)="newEntry.endTime = newEnd.value" 
+          (keyup.enter)="addEntry(); focus(newStart)" [ngModel]="newEntry.endTime" class="time-input" tabindex="2">
+      </div>
+      <div class="grid-3 right">
+        <a class="btn btn-small" (click)="addEntry(); focus(newStart)" (keyup.enter)="addEntry(); focus(newStart)" tabindex="3">Add</a>
+      </div>
+    </div>
     <ul>
-      <li *ngFor="let entry of entries">
-        <input type="text" #entryStart maxlength="5" placeholder="HH:MM" (change)="entry.startTime = entryStart.value" 
-          (blur)="updateEntry(entry)" [ngModel]="entry.startTime">
-        <input type="text" #entryEnd maxlength="5" placeholder="HH:MM" (change)="entry.endTime = entryEnd.value" 
-          (blur)="updateEntry(entry)" [ngModel]="entry.endTime">
-        <button (click)="removeEntry(entry)">&times;</button>
+      <li *ngFor="let entry of entries" class="row list-padding list-border">
+        <div class="grid-3">
+          <input type="text" #entryStart maxlength="5" placeholder="HH:MM" (change)="entry.startTime = entryStart.value" 
+            (blur)="updateEntry(entry)" [ngModel]="entry.startTime" class="time-input">
+        </div>
+        <div class="grid-3">
+          <input type="text" #entryEnd maxlength="5" placeholder="HH:MM" (change)="entry.endTime = entryEnd.value" 
+            (blur)="updateEntry(entry)" [ngModel]="entry.endTime" class="time-input">
+        </div>
+        <div class="grid-3 right">
+          <span class="del-btn" (click)="removeEntry(entry)">&times;</span>
+        </div>
       </li>
     </ul>
   </div>
-  <div>
-    <input type="text" #newStart maxlength="5" placeholder="HH:MM" (change)="newEntry.startTime = newStart.value" 
-      (keyup.enter)="addEntry()" [ngModel]="newEntry.startTime">
-    <input type="text" #newEnd maxlength="5" placeholder="HH:MM" (change)="newEntry.endTime = newEnd.value" 
-      (keyup.enter)="addEntry()" [ngModel]="newEntry.endTime">
-    <button (click)="addEntry()">Add</button>
-  </div>
 </section>
-<footer *ngIf="entries.length > 0">
-  <b>Total Time:</b><span>{{getTotalTime()}}</span>
+
+<footer>
+  <div *ngIf="entries.length > 0" class="row vcenter">
+    <div class="grid-3">
+      <b>Total Time:</b><span class="time-total">{{getTotalTime()}}</span>
+    </div>
+    <div class="grid-3 right">
+      <a class="btn" (click)="clear()">Clear all</a>
+    </div>
+  </div>
 </footer>

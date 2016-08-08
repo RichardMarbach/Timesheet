@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChildren } from '@angular/core';
 import { TimeUnit } from '../time-unit';
 import { TimeEntry } from '../time-entry';
 import { TimeEntryService } from '../time-entry.service';
@@ -10,11 +10,16 @@ import { TimeEntryService } from '../time-entry.service';
   styleUrls: ['time-sheet-app.component.css'],
   providers: [TimeEntryService]
 })
-export class TimeSheetAppComponent {
+export class TimeSheetAppComponent implements AfterViewInit {
+  @ViewChildren('newStart') focusChild;
 
   newEntry: any = new TimeEntry();
 
   constructor(private timeEntry: TimeEntryService) { }
+
+  ngAfterViewInit() {
+    this.focus(this.focusChild.first.nativeElement);
+  }
 
   addEntry() {
     this.timeEntry.addEntry(this.newEntry);
@@ -35,6 +40,17 @@ export class TimeSheetAppComponent {
 
   getTotalTime(): TimeUnit {
     return this.timeEntry.sumEntries();
+  }
+
+  showListBorder(): boolean {
+    return this.entries.length > 0;
+  }
+
+  focus(item) {
+    item.focus();
+    setTimeout(_ => {
+      item.select();
+    }, 0);
   }
 
   get entries(): TimeEntry[] {

@@ -1,0 +1,171 @@
+header {
+    text-align: center;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer > div {
+    width: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+h1 {
+    color: #303030;
+}
+
+h3 {
+    color: #666;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+li {
+    outline: none;
+}
+
+li:first-child {
+    padding-top: 0;
+}
+
+li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.list-padding {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.list-border {
+    border-bottom: 1px solid #ccc;
+}
+
+input {
+    color: #303030;
+    outline: none;
+    background: 0 0;
+    width: 100%;
+    padding: 4px;
+    margin: 0px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.8em;
+    border: none;
+    border-bottom: 1px solid #666;
+
+    transition: border-bottom 0.2s ease-in;
+}
+
+input:focus {
+    border-bottom: 1px solid #3f51b5;
+}
+
+input:placeholder-shown {
+    color: #bbb;
+}
+
+.btn {
+    display: inline-block;
+    line-height: 36px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: #5467d2;
+    border: none;
+    min-width: 56px;
+    color: #fff;
+    font-size: 0.85em;
+    padding: 0px 16px;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+}
+
+.btn-small {
+    height: 30px;
+    line-height: 30px;
+}
+
+.btn:active {
+    box-shadow: none;
+    outline: none;
+}
+
+.right {
+    margin-left: auto;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.vcenter {
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+}
+
+.grid-2 {
+    flex: 0 0 50%;
+}
+
+.grid-3 {
+    flex: 0 0 33.3333%;
+}
+
+.grid-4 {
+    flex: 0 0 25%;
+}
+
+.no-shrink {
+    flex-shrink: 0;
+}
+
+.main {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.time-section {
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    overflow-y: scroll;
+}
+
+.time-input {
+    width: 50px;
+}
+
+.del-btn {
+    color: #606060;
+}
+
+.del-btn:hover {
+    color: #303030;
+    cursor: pointer;
+}
+
+.time-total {
+    padding-left: 10px;
+}
