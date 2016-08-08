@@ -1,3 +1,26 @@
-<p>
-  time-sheet-app works!
-</p>
+<header>
+  <h1>Timesheet calculator</h1>
+</header>
+<section>
+  <div *ngIf="entries.length > 0">
+    <ul>
+      <li *ngFor="let entry of entries">
+        <input type="text" #entryStart maxlength="5" placeholder="HH:MM" (change)="entry.startTime = entryStart.value" 
+          (blur)="updateEntry(entry)" [ngModel]="entry.startTime">
+        <input type="text" #entryEnd maxlength="5" placeholder="HH:MM" (change)="entry.endTime = entryEnd.value" 
+          (blur)="updateEntry(entry)" [ngModel]="entry.endTime">
+        <button (click)="removeEntry(entry)">&times;</button>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <input type="text" #newStart maxlength="5" placeholder="HH:MM" (change)="newEntry.startTime = newStart.value" 
+      (keyup.enter)="addEntry()" [ngModel]="newEntry.startTime">
+    <input type="text" #newEnd maxlength="5" placeholder="HH:MM" (change)="newEntry.endTime = newEnd.value" 
+      (keyup.enter)="addEntry()" [ngModel]="newEntry.endTime">
+    <button (click)="addEntry()">Add</button>
+  </div>
+</section>
+<footer *ngIf="entries.length > 0">
+  <b>Total Time:</b><span>{{getTotalTime()}}</span>
+</footer>
